@@ -17,4 +17,4 @@ COPY ./scripts/ /docker-entrypoint-initdb.d/
 EXPOSE 3306
 
 # Start MariaDB when the container launches
-CMD ["mysqld"]
+#CMD ["mysql"] macht MariaDB selber muss man nicht mehr machen

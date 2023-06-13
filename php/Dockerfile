@@ -1,5 +1,5 @@
 # Use an official PHP runtime as the base image
-FROM php:8.1-apache
+FROM php:8.1-apache 
 
 # Install additional dependencies if needed
 # For example, if you need to install additional PHP extensions
@@ -11,7 +11,7 @@ RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 # Set the working directory
 WORKDIR /var/www/html
-
+#
 # Expose port 80 for Apache
 EXPOSE 80
 

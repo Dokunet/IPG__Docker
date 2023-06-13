@@ -2,6 +2,16 @@ version: '3.1'
 name: ipg-docker-webserver
 
 services:
+  database:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - db_log:/var/log
+
   webserver:
     build:
       context: ./php
@@ -14,15 +24,13 @@ services:
       - DB_HOST=database
     volumes:
       - ./php/src:/var/www/html
+      - webserver_log:/var/log
 
-  database:
-    build:
-      context: ./db
-      dockerfile: Dockerfile
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
+    
+#database und webserver sind freiwählbare Namen die ich auch furz nennen kann und das gleiche tun
 
 volumes:
+#dafür da damit die Daten Persisitert werden
   db_data:
+  webserver_log:
+  db_log:
